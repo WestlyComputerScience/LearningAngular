@@ -27,7 +27,7 @@ let users: IUser[] = [
     { name: "John3", id: 3, email: "" }
 ]
 
-let [user1, user2] : IUser[] = [ // grabs the first 2 users from this array
+let [user1, user2]: IUser[] = [ // grabs the first 2 users from this array
     { name: "John", id: 1, email: "" },
     { name: "John2", id: 2, email: "" },
     { name: "John3", id: 3, email: "" }
@@ -36,5 +36,12 @@ let [user1, user2] : IUser[] = [ // grabs the first 2 users from this array
 // or can use a function
 
 let result = users.filter(user => user.id > 2); // only gets users with an id > 2
+
+@Component({}) // this would be an example of a decorator (add extra functionalility without changing core code, wrappers that modify behavior)
+class Component {
+    constructor(public name: string) {
+
+    }
+}
 
 export { }

@@ -1,0 +1,15 @@
+<!-- Interpolation Syntax -->
+<!-- replaces {{hotelName}} with the value of hotelName property in the component class at runtime -->
+<h1>Welcome to {{hotelName}}</h1> <!-- Note: this variable is coming from our exported component rooms. Also, this is interpolation syntax -->
+
+<!-- Property Binding -->
+<!-- document.getElementById('numOfRooms').innerText = numOfRooms;      Normal Javascript code (very long) -->
+<!-- quicker way -->
+<div [hidden] = "hideRooms">
+    Number of Rooms: 
+    <div [innerText]="numOfRooms"></div> <!-- Note: this is box syntax -->
+</div>
+
+<!-- Event Binding -->
+<!-- <button click = "functionName"></button>     Normal HTML code-->
+<button (click)="toggle()">Toggle</button> <!-- Note: this is banana syntax-->
