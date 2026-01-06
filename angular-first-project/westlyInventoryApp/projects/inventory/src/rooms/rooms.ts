@@ -1,25 +1,16 @@
-import { Component } from '@angular/core';
+export interface Room{
+    totalRooms: number;
+    availableRooms: number;
+    bookedRooms: number;
+}
 
-@Component({
-  selector: 'hinv-rooms',
-  standalone: true,
-  templateUrl: './rooms.html',
-  styleUrl: './rooms.scss',
-})
-export class RoomsComponent {
-
-  hotelName = "Hilton Hotel";
-
-  numOfRooms = 9;
-
-  hideRooms = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  toggle () {
-    this.hideRooms = !this.hideRooms;
-  }
+export interface RoomList{
+    roomNumber: number;
+    roomType: string;
+    amenities: string;
+    price: number;
+    photos: string;
+    checkInTime: Date;
+    checkOutTime: Date;
+    rating: number;
 }
