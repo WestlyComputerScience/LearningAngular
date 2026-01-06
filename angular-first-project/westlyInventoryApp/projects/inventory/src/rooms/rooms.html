@@ -5,11 +5,92 @@
 <!-- Property Binding -->
 <!-- document.getElementById('numOfRooms').innerText = numOfRooms;      Normal Javascript code (very long) -->
 <!-- quicker way -->
+<!-- Note: the "[innerText] refers to this"-->
+<!-- Performance Note: When we toggle hidden, these elements are still avaiable on the DOM (aka not totally deleted), which can cause performance issues when you have a lot of elements -->
 <div [hidden] = "hideRooms">
     Number of Rooms: 
-    <div [innerText]="numOfRooms"></div> <!-- Note: this is box syntax -->
+    <div *ngIf="rooms.availableRooms > 0" [ngStyle]="{'color': rooms.availableRooms > 0 ? 'pink' : 'red'}" [innerText]="numOfRooms"></div> <!-- Note: this is box syntax -->
 </div>
 
 <!-- Event Binding -->
 <!-- <button click = "functionName"></button>     Normal HTML code-->
 <button (click)="toggle()">Toggle</button> <!-- Note: this is banana syntax-->
+
+<!-- Note: CRLT + P can help you search for files in VScode and Chrome -->
+
+<!-- DIRECTIVES -->
+<!-- Directives are used to: -->
+    <!-- 1.) change the behavior and appearance of DOM element -->
+    <!-- 2.) implement all lifecycle hooks -->
+    <!-- 3.) can not have a template -->
+<!-- Types of Directives -->
+    <!-- 1.) Structural Directives -->
+        <!-- High cost, change behavior of DOM, can cause performance issues -->
+    <!-- 2.) Attribute Directives -->
+        <!-- use more for the most part -->
+<!-- Built-in Directives -->
+    <!-- *ngIf -->
+    <!-- *ngFor -->
+    <!-- *ngSwitch -->
+    <!-- ngClass -->
+    <!-- ngStyle -->
+<!-- Side Note: DOM = "Document Object Model", aka it's a programming interface for web documents that treats HTML or XML page as a heriarchical tree of objects -->
+
+<br>
+
+{{ rooms?.availableRooms ?? 'No Rooms' }} <!-- If avaiable rooms doesn't exist, then display "No Rooms"-->
+
+{{ roomList | json }} <!-- Mostly used for debugging --> <!-- json pipe -->
+
+<!-- If we have an available room, I want to display it! -->
+<!-- Use *ngIf instead of [hidden] to help user performace 😎 -->
+<!-- next directive is "*ngFor", kinda've like a for-loop, loops through all records -->
+<div *ngIf="rooms.availableRooms > 0"> <!-- Check if variables exists before using it -->
+    Rooms List
+    <!-- {{ roomList }} -->
+    <table>
+        <tr> <!-- "tr" = table rows-->
+            <th>Index</th>
+            <th>Even/Odd</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Room Price</th>
+            <th>Room Amenities</th>
+            <th>Check In Time</th>
+            <th>Rating</th>
+        </tr>
+        <!-- This ngClass toggles css styles between even and odd -->
+        <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of roomList | slice: 0:1; let i = index; let f = first; let l = last; let e=even; let o=odd"> <!-- runs for each record in roomList--> <!-- Note: u don't really use slice unless your tabular data has a set size -->
+            <td> {{ i | percent }} </td>
+            <td> {{ e ? "Even" : "Odd" }} </td>
+            <td> {{ room.roomNumber }} </td>
+            <td> {{ room.roomType | titlecase }} </td> <!-- Every first letter is capitalized -->
+            <td> {{ room.price | currency : 'INR' }} </td> <!-- Changed it to Indian Currency -->
+            <td> {{ room.amenities | uppercase }} </td>
+            <td> {{ room.checkInTime | date: 'short' }} </td> <!-- "|" allows us to use various pipes--> <!-- Angular.io gets into more specifics! -->
+            <td> {{ room.rating | number : '1.0-7' : 'en-us' }} </td> <!-- Note: number is the decimal pipe! --> <!-- 1 (number before decimal) . 0-0 (0 numbers after decimal)-->
+        </tr>
+    </table>
+</div>
+
+<!-- The * in *ngIf lets you know that they're structural directives --> <!-- Note: DIRECTIVE = special instruction in source code that tells compiler etc. on how to process it -->
+<!-- Structural directives can modify your DOM, attribute directives cannot add/remove elements from the DOM (only tweak certain things) -->
+
+<!-- PIPES -->
+    <!-- Used for data transformation -->
+    <!-- Don't change the actual object -->
+    <!-- Types of pipes: -->
+        <!-- DatePipe -->
+        <!-- UpperCasePipe -->
+        <!-- LowerCasePipe -->
+        <!-- TitlecasePipe-->
+        <!-- CurrencyPipe -->
+        <!-- DecimalPipe -->
+        <!-- PercentPipe -->
+        <!-- JsonPipe -->
+        <!-- SlicePipe -->
+        <!-- AsyncPipe -->
+         
+
+
+
