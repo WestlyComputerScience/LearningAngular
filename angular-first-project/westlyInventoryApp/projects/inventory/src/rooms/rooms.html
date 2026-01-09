@@ -38,39 +38,33 @@
 
 <br>
 
-{{ rooms?.availableRooms ?? 'No Rooms' }} <!-- If avaiable rooms doesn't exist, then display "No Rooms"-->
+<!-- {{ rooms?.availableRooms ?? 'No Rooms' }} --> <!-- If avaiable rooms doesn't exist, then display "No Rooms"-->
 
 {{ roomList | json }} <!-- Mostly used for debugging --> <!-- json pipe -->
+
+<div *ngIf="selectedRoom">
+    {{ selectedRoom | json }}
+</div>
+
+<div>
+    <button (click)="addRoom()">Add Room</button>
+</div>
+
 
 <!-- If we have an available room, I want to display it! -->
 <!-- Use *ngIf instead of [hidden] to help user performace 😎 -->
 <!-- next directive is "*ngFor", kinda've like a for-loop, loops through all records -->
 <div *ngIf="rooms.availableRooms > 0"> <!-- Check if variables exists before using it -->
     Rooms List
-    <!-- {{ roomList }} -->
-    <table>
-        <tr> <!-- "tr" = table rows-->
-            <th>Index</th>
-            <th>Even/Odd</th>
-            <th>Room Number</th>
-            <th>Room Type</th>
-            <th>Room Price</th>
-            <th>Room Amenities</th>
-            <th>Check In Time</th>
-            <th>Rating</th>
-        </tr>
-        <!-- This ngClass toggles css styles between even and odd -->
-        <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of roomList | slice: 0:1; let i = index; let f = first; let l = last; let e=even; let o=odd"> <!-- runs for each record in roomList--> <!-- Note: u don't really use slice unless your tabular data has a set size -->
-            <td> {{ i | percent }} </td>
-            <td> {{ e ? "Even" : "Odd" }} </td>
-            <td> {{ room.roomNumber }} </td>
-            <td> {{ room.roomType | titlecase }} </td> <!-- Every first letter is capitalized -->
-            <td> {{ room.price | currency : 'INR' }} </td> <!-- Changed it to Indian Currency -->
-            <td> {{ room.amenities | uppercase }} </td>
-            <td> {{ room.checkInTime | date: 'short' }} </td> <!-- "|" allows us to use various pipes--> <!-- Angular.io gets into more specifics! -->
-            <td> {{ room.rating | number : '1.0-7' : 'en-us' }} </td> <!-- Note: number is the decimal pipe! --> <!-- 1 (number before decimal) . 0-0 (0 numbers after decimal)-->
-        </tr>
-    </table>
+    <!-- [rooms]="roomList" is input binding, aka angular takes the parent's roomList value and passes it to the child's rooms -->
+    <!-- (selectedRoom)="selectedRoom($event)" is output event binding. selectedRoom is an output field defined in the child and emits and event when something happens in the child, $event contains the information -->
+        <!-- Steps: -->
+            <!-- 1. Parent sends data down with [rooms]="roomList" -->
+            <!-- 2. Child renders the list -->
+            <!-- 3. User clicks a room in the child component -->
+            <!-- 4. Child emeits the selected room with this.selectedRoom.emit(room) -->
+            <!-- 5. Parent listens to the event (selectedRoom)="selectRoom($event)" -->
+    <hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)" [title]="'Room List'"></hinv-rooms-list> <!-- $event is the event recieved from the child component to work with from emit() -->
 </div>
 
 <!-- The * in *ngIf lets you know that they're structural directives --> <!-- Note: DIRECTIVE = special instruction in source code that tells compiler etc. on how to process it -->
@@ -91,6 +85,27 @@
         <!-- SlicePipe -->
         <!-- AsyncPipe -->
          
+<!-- LIFECYCLE HOOKS -->
+    <!-- all components need to go through some lifecycle-hooks/events -->
+    <!-- Lifecycle ends when component is destroyed -->
+        <!-- ngOnChanges -->
+        <!-- ngOnInit -->
+        <!-- ngDoCheck -->
+        <!-- ngAfterContentInit -->
+        <!-- ngAfterContentChecked -->
+        <!-- ngAfterViewInit -->
+        <!-- ngAfterViewChecked -->
+        <!-- ngOnDestroy -->
 
+<!-- COMPONENT COMMUNICATION -->
+    <!-- Ways for component communication: -->
+        <!-- When 2+ components need to interact, we require component communication (i.e. our app and rooms components need to communicate) -->
+        <!-- Many ways to achieve this -->
+            <!-- Using @Input and @Output -->
+            <!-- Using @ViewChild and @ContentChild -->
+            <!-- Using Services -->
 
+<!-- In this example, he right-clicked rooms + opened in integrated terminal, then called "ng g c room-list" in the terminal to create a new room-list component. Very efficient way to go about doing so. -->
 
+<!-- In rendering in the DOM, he turned on paint flash. This shows all the the DOM elements that change (Angular detects these changes). -->
+<!-- He shows all the objects being updated with change detection, which can cause bad performance issues, so we need to optimize it-->

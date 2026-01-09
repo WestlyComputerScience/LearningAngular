@@ -6,37 +6,31 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "inventory": {
+    "my-app": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/inventory",
-      "sourceRoot": "projects/inventory/src",
-      "prefix": "hinv",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/inventory/src/main.ts",
-            "tsConfig": "projects/inventory/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/inventory/public"
+                "input": "public"
               }
             ],
             "styles": [
-              "projects/inventory/src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
-            "server": "projects/inventory/src/main.server.ts",
+            "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
-              "entry": "projects/inventory/src/server.ts"
+              "entry": "src/server.ts"
             }
           },
           "configurations": {
@@ -67,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "inventory:build:production"
+              "buildTarget": "my-app:build:production"
             },
             "development": {
-              "buildTarget": "inventory:build:development"
+              "buildTarget": "my-app:build:development"
             }
           },
           "defaultConfiguration": "development"
