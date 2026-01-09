@@ -1,0 +1,39 @@
+<!-- This is our "dumb component" (rooms is the smart component), aka, this component doesn't know where the information is coming from and just renders the data -->
+<!-- This component needs to communicate with the parent if an action were to occur -->
+
+<!-- {{ roomList }} -->
+<h2>{{ title }}</h2>
+<table class="table">
+    <tbody>
+        <tr> <!-- "tr" = table rows-->
+            <th>Index</th>
+            <th>Even/Odd</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Room Price</th>
+            <th>Room Amenities</th>
+            <th>Check In Time</th>
+            <th>Rating</th>
+            <th>
+                Select Room
+            </th>
+        </tr>
+        <!-- This ngClass toggles css styles between even and odd -->
+            <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of rooms | slice: 0:100; let i = index; let f = first; let l = last; let e=even; let o=odd"> <!-- runs for each record in roomList--> <!-- Note: u don't really use slice unless your tabular data has a set size -->
+                <td> {{ i | percent }} </td>
+                <td> {{ e ? "Even" : "Odd" }} </td>
+                <td> {{ room.roomNumber }} </td>
+                <td> {{ room.roomType | titlecase }} </td> <!-- Every first letter is capitalized -->
+                <td> {{ room.price | currency : 'INR' }} </td> <!-- Changed it to Indian Currency -->
+                <td> {{ room.amenities | uppercase }} </td>
+                <td> {{ room.checkInTime | date: 'short' }} </td> <!-- "|" allows us to use various pipes--> <!-- Angular.io gets into more specifics! -->
+                <td> {{ room.rating | number : '1.0-7' : 'en-us' }} </td> <!-- Note: number is the decimal pipe! --> <!-- 1 (number before decimal) . 0-0 (0 numbers after decimal)-->
+                <td>
+                    <!-- Note: this syntax is referred to as "event binding." The (click) is angular listening for the click event on the DOM element, which then runs the expression when detected -->
+                    <button class="btn btn-primary" (click)="selectRoom(room)"> <!-- Note: btn primary is a bootstrap class --> <!-- selectRoom is a function which takes the room as our parameter on click -->
+                        Select
+                    </button>
+                </td>
+        </tr>
+    </tbody>
+</table>
