@@ -1,4 +1,4 @@
-
+/* 
 ul {
     display: flex;
     flex-wrap: wrap;
@@ -28,12 +28,12 @@ p {
     font-size: 14px;
 }
 
-/*
+
 p.sno {
     font-weight: bold;
     font-size: 22px;
 }
-*/
+
 
 p.title {
     font-size: 18px;
@@ -41,4 +41,4 @@ p.title {
 
 p.amount {
     font-weight: bold;
-}
+} */
