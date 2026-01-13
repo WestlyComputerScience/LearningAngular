@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { Books } from './books/books';
+import { Cart } from "./cart/cart";
 
 @Component({ // this is the metadata for the component
   selector: 'app-root',
-  imports: [RouterOutlet, Books],
+  imports: [RouterOutlet, RouterLink, Books, Cart,],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
