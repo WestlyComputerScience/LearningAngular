@@ -188,3 +188,7 @@ ANGULAR ROUTING:
       3. Add router outlet: Add a <router-outlet> directive to the application template to specify where the routed components should be displayed
       4. Navigate between routes: Use the Router service or routerLink directive to navigate between different routes in the application
 */
+
+/*
+Side Note: called ng generate guard auth/auth to guard users from accessing their cart without being logged in (selected canActivate)
+*/

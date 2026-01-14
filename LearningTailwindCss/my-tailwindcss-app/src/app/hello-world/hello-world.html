@@ -1,0 +1,46 @@
+<!-- COLORS: -->
+<div class="bg-goatColor-100"> <!-- "bg" = background, then make it blue  (200 being the shade). Also note: he has a color palette from tailwind css documentation -->
+    <h1 class="text-green-600">Hello World!</h1> <!-- The "text-"calls the text variable in tailwind to apply properties to it-->
+    <h1 class="text-red-400">Hello World</h1>
+    <h1 class="border-6 border-amber-500">Border</h1> <!-- The "border" class applies a border to the element, the 6 is the border width (pixels) -->
+</div>
+
+<!-- CUSTOMIZATION: -->
+<div>
+    <h1 class="text-xs sm:text-base md:text-lg lg:text-3xl">Hello World!</h1> <!-- Can change size of the text. "lg" means when I'm on a large screen, I want large text--> <!-- lol, it changes in real time -->
+    <h1 class="mb-1 bg-[#bada55]">I'm spaced out :o</h1> <!-- "mb" = margin bottom, "mt" = margin top, "ml" = margin left, "mr" = margin right --> <!-- You can also use custom hex colors like this -->
+    <h1 class="p-10">I'm padded in :o</h1> <!-- "p" = padding, same as margin but inside the element -->
+</div>
+
+<!-- TYPHOGRAPHY: -->
+<div>
+    <!-- Note: leading-loose gives us space to breathe between a line and other elements -->
+    <h1 class="text-9xl italic underline leading-loose decoration-red-300 decoration-double decoration-2">Title 1</h1> <!-- added some additionaly customization --> <!-- decoration modifies the underline --> <!-- decoration double for 2 lines (can be dotted/wavy) --> <!-- decoration-2 for thickness -->
+    <h1 class="text-2xl line-through">Title 2</h1> <!-- added some additionaly customization -->
+    <h1 class="text-xl overline">Title 3</h1>  <!-- added some additionaly customization -->
+    <p class="text-base capitalize">A regular paragraph</p> <!-- titlecasing can be applied with capitalize -->
+    <p class="text-sm wrap-break-word">A descriptive aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa paragraph</p> <!-- long word will simply go to the next line-->
+    <p class="text-xs whitespace-normal">A little note</p> <!-- whitespace-normal allows line breaks and text wrapping -->
+    <p class="truncate">aa a dfeuiqh idquh diq dioqjfr owiubq iydwqi djowqfuhgbei uwqo hdqoiuyfe wioqjod hnqiufr wgiqwo </p> <!-- truncate will put ... and not break the line for smaller screens -->
+</div>
+
+<!-- SPACING AND SIZES: -->
+<!-- Note: padding is space inside the element and margin is space outside the element -->
+<div class="bg-red-500 text-white font-bold px-2 py-2"> <!-- The "px-2" adds padding on the left and right sides. The "py-2" adds padding on the top and bottom sides. -->
+    <p>Hello</p>
+</div>
+<!-- Note: "w-16" fixes the width to 4rem-->
+<div class="bg-red-500 text-white font-bold m-4 w-16"> <!-- Note that m-4 is margin and that the background color doesn't come along with this! Similar to padding with mx, my, mr, ml, mt, mb, m, etc. -->
+    <p>Hello</p>
+</div>
+<!-- <div class="bg-red-500 text-white font-bold -mt-8"> lol, you can use negative margins
+    <p>Hello</p>
+</div> -->
+<br>
+<div class="flex"> <!-- flex makes the boxes inline (aka appear side by side)-->
+    <div class="bg-amber-700 w-16 h-16"></div> <!-- Note: the width and height are now 16 -->
+    <div class="bg-emerald-700 w-16 h-16"></div>
+</div>
+<div class="bg-amber-700 w-1/2 my-10 h-20"></div> <!-- This makes it take the width of 1/2 of the screen -->
+
+<!-- Note: the documentation for these is actually really good, for any missed commands you should check that, lol -->

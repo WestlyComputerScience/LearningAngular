@@ -1,20 +1,34 @@
-<div class="flex m-auto h-screen juistify-center"> <!-- Note: we did some tailwind css here-->
-    <form class="p-4 rounded-lg border m-auto w-1/3">
-        <h1 class="text-center text-xl">Login</h1>
+<div class="flex m-auto h-screen justify-center"> <!-- Note: we did some tailwind css here-->
+    <form (ngSubmit)="onSubmit()" #myForm="ngForm" class="p-4 rounded-lg border m-auto w-1/3">
+        <h1 class="text-center text-xl">Register</h1>
         <div class="mb-5 w-full">
             <label for="email">Email</label>
-            <input type="email" id="email" class="p-2 rounded w-full" placeholder="Email Address">
+            <input type="email" id="email" class="p-2 rounded w-full" placeholder="Email Address" [(ngModel)]="form.email" name="email" #email="ngModel" required> <!-- #email="ngModel" creates template reference variable named email that points NgModel directive instance on that input -->
+        </div>
+        <!-- Note: the ngIf part is another way to do it, longer than our hidden part below -->
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="ml-2 p-2 bg-red-300 text-red-800 rounded"> <!-- Note: this needs #email="ngModel" to work--> <!-- Also required the input to have the "required" field to work -->
+            Email field must be valid.
         </div>
         <div class="mb-5 w-full">
             <label for="password">Password</label>
-            <input type="password" id="password" class="p-2 rounded w-full" placeholder="Password">
+            <input type="password" id="password" class="p-2 rounded w-full" placeholder="Password" [(ngModel)]="form.password" name="password" #password="ngModel" required> <!-- #password="ngModel" creates template reference variable named password that points NgModel directive instance on that input -->
+        </div>
+        <div>
+            <div [hidden]="password.valid" class="ml-2 p-2 bg-red-300 text-red-800 rounded"> <!-- Note: this needs #password="ngModel" to work--> <!-- Also required the input to have the "required" field to work -->
+                Password field must be valid.
+            </div>
         </div>
         <div class="mb-5 w-full">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" class="p-2 rounded w-full" placeholder="Confirm Password">
+            <input type="password" id="confirmPassword" class="p-2 rounded w-full" placeholder="Confirm Password" [(ngModel)]="form.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" required> <!-- #confirmPassword="ngModel" creates template reference variable named confirmPassword that points NgModel directive instance on that input -->
+        </div>
+        <div>
+            <div [hidden]="confirmPassword.valid" class="ml-2 p-2 bg-red-300 text-red-800 rounded"> <!-- Note: this needs #confirmPassword="ngModel" to work--> <!-- Also required the input to have the "required" field to work -->
+                Confirm Password field must be valid.
+            </div>
         </div>
         <div class="mb-5">
-            <input type="submit" class="p-2 w-full bg-red-700 text-white hover:bg-red-900 rounded">
+            <input type="submit" [disabled]="myForm.form.invalid" class="p-2 w-full bg-red-700 text-white hover:bg-red-900 rounded"> <!-- If the form is invalid, the submit button is disabled -->
         </div>
     </form>
 </div>
