@@ -1,0 +1,25 @@
+<!-- ng g (generate) c (component) rooms // this creates a component-->
+ <h1>Hello World!</h1>
+<hinv-rooms></hinv-rooms> <!-- This gets our "rooms" component -->
+
+ <!-- Note: this version is deprecated code! -->
+<!-- <div *ngSwitch="role">
+    <div *ngSwitchCase="'User'">  Single quotes inside double to treat it as a string and not a variable!
+        Welcome User!
+    </div>
+    <div *ngSwitchCase="'Admin'">
+        Welcome Admin!
+    </div>
+    <div *ngSwitchDefault>
+        You're not authorized to view this page!
+    </div>
+</div> -->
+
+<!-- Updated *ngSwitch -->
+<!--
+<ng-container *switch="role">
+    <div *case="'User'">Welcome User!</div>
+    <div *case="'Admin'">Welcome Admin!</div>
+    <div *default>You're not authorized to view this page!</div>
+</ng-container>
+-->
