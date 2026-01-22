@@ -1,0 +1,23 @@
+<h2>Programming Books List</h2>
+
+<!-- <button (click)="toggleHidden()">
+    <ng-container *ngIf="isHidden">Show Books</ng-container> Special Angular tag "ngContainer" that removes everythign to only have Show Books (aka no span tag or div in the DOM) (hides the information from the Dom)
+    <ng-container *ngIf="!isHidden">Hide Books</ng-container>
+</button> -->
+
+<!-- <button (click)="isHidden = !isHidden">Toggle</button> -->
+
+<!-- <input id="booksInput" type="text" (input)="handleInput($event)"> This would be the longer way of doing so -->
+<!-- 2-Way Binding way-->
+<!-- ngModel combines the input + output to make 2-way binding easy-->
+<input id="booksInput" type="text" [(ngModel)]="myName"> <!-- Now ngModel updates the value as we enter information -->
+<p>{{ myName }}</p>
+
+<!-- {{ name }} Allows us to use our typscript class in our component
+{{ author }} -->
+<ul [hidden] = "isHidden" *ngIf="isShowing">
+    <ng-container *ngFor="let singleBook of books; let i=index"> <!-- Instead of HTML knowing about the loop, it now only contains information about the elements -->
+        <!-- <app-book (emitBook)="addToCart($event)" [book]="singleBook"></app-book> -->
+        <app-book [book]="singleBook"></app-book>
+    </ng-container>
+</ul>

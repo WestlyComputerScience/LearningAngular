@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap'); /* Importing the Lora font from Google Fonts */
+
+/* This is how i've figured out how to add custom colors to tailwind css */
+@theme {
+    --color-goatColor-100: #a4ebe4;
+    --color-goatColor-200: #7fe3dd;
+    --color-goatColor-300: #59dbd6;
+    --sm-screen: '480px';
+    --md-screen: '768px';
+    --lg-screen: '976px';
+    --xl-screen: '1440px';
+    --spacing-1: 100px;
+    --font-size-base: 18px; /* Can't get this to work */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+}
+
+@layer base {
+    html {
+        /* background-color: lime;  lol, makes the base html background color lime */
+        /* @apply bg-slate-600 text-white text-lg font-bold; background is slate, all text by default is white, text large, and font is bold */
+        
+        /* Applying the Lora font to the entire application */
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: normal;
+        font-style: normal;
+    }
+}

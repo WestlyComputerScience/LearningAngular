@@ -1,0 +1,170 @@
+<!-- COLORS: -->
+<div class="bg-goatColor-100"> <!-- "bg" = background, then make it blue  (200 being the shade). Also note: he has a color palette from tailwind css documentation -->
+    <h1 class="text-green-600">Hello World!</h1> <!-- The "text-"calls the text variable in tailwind to apply properties to it-->
+    <h1 class="text-red-400">Hello World</h1>
+    <h1 class="border-6 border-amber-500">Border</h1> <!-- The "border" class applies a border to the element, the 6 is the border width (pixels) -->
+</div>
+
+<!-- CUSTOMIZATION: -->
+<div>
+    <h1 class="text-xs sm:text-base md:text-lg lg:text-3xl">Hello World!</h1> <!-- Can change size of the text. "lg" means when I'm on a large screen, I want large text--> <!-- lol, it changes in real time -->
+    <h1 class="mb-1 bg-[#bada55]">I'm spaced out :o</h1> <!-- "mb" = margin bottom, "mt" = margin top, "ml" = margin left, "mr" = margin right --> <!-- You can also use custom hex colors like this -->
+    <h1 class="p-10">I'm padded in :o</h1> <!-- "p" = padding, same as margin but inside the element -->
+</div>
+
+<!-- TYPHOGRAPHY: -->
+<div>
+    <!-- Note: leading-loose gives us space to breathe between a line and other elements -->
+    <h1 class="text-9xl italic underline leading-loose decoration-red-300 decoration-double decoration-2">Title 1</h1> <!-- added some additionaly customization --> <!-- decoration modifies the underline --> <!-- decoration double for 2 lines (can be dotted/wavy) --> <!-- decoration-2 for thickness -->
+    <h1 class="text-2xl line-through">Title 2</h1> <!-- added some additionaly customization -->
+    <h1 class="text-xl overline">Title 3</h1>  <!-- added some additionaly customization -->
+    <p class="text-base capitalize">A regular paragraph</p> <!-- titlecasing can be applied with capitalize -->
+    <p class="text-sm wrap-break-word">A descriptive aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa paragraph</p> <!-- long word will simply go to the next line-->
+    <p class="text-xs whitespace-normal">A little note</p> <!-- whitespace-normal allows line breaks and text wrapping -->
+    <p class="truncate">aa a dfeuiqh idquh diq dioqjfr owiubq iydwqi djowqfuhgbei uwqo hdqoiuyfe wioqjod hnqiufr wgiqwo </p> <!-- truncate will put ... and not break the line for smaller screens -->
+</div>
+
+<!-- SPACING AND SIZES: -->
+<!-- Note: padding is space inside the element and margin is space outside the element -->
+<div class="bg-red-500 text-white font-bold px-2 py-2"> <!-- The "px-2" adds padding on the left and right sides. The "py-2" adds padding on the top and bottom sides. -->
+    <p>Hello</p>
+</div>
+<!-- Note: "w-16" fixes the width to 4rem-->
+<div class="bg-red-500 text-white font-bold m-4 w-16"> <!-- Note that m-4 is margin and that the background color doesn't come along with this! Similar to padding with mx, my, mr, ml, mt, mb, m, etc. -->
+    <p>Hello</p>
+</div>
+<!-- <div class="bg-red-500 text-white font-bold -mt-8"> lol, you can use negative margins
+    <p>Hello</p>
+</div> -->
+<br>
+<div class="flex"> <!-- flex makes the boxes inline (aka appear side by side)-->
+    <div class="bg-amber-700 w-16 h-16"></div> <!-- Note: the width and height are now 16 -->
+    <div class="bg-emerald-700 w-16 h-16"></div>
+</div>
+<div class="bg-amber-700 w-1/2 my-10 h-20 rounded-lg"></div> <!-- This makes it take the width of 1/2 of the screen --> <!-- rounded-lg to round it -->
+
+<!-- Note: the documentation for these is actually really good, for any missed commands you should check that, lol -->
+
+<!-- GRIDS -->
+<div class="h-screen text-white Parent bg-slate-900">
+    <div class="container mx-auto"> <!-- container sets max-width based on size, mx-auto centers the element horizontally within parent container -->
+        <div class="grid grid-cols-6 gap-4"> <!-- "grid" makes all children grid items, "grid-cols-6" divides container into 6 equal columns, "gap-4" adds spacing between grid items-->
+            <div class="col-span-4 col-start-3 rounded-lg bg-sky-500">1</div> <!-- "col-span-4 makes each div take up 4 of the 6 column spaces, "col-start-3" makes each div start at column 3-->
+            <div class="col-span-2 rounded-lg bg-sky-500">2</div> <!-- can also specify column start and end! -->
+            <div class="col-span-1 col-start-2 rounded-lg bg-sky-500">3</div>
+            <div class="col-span-1 rounded-lg bg-sky-500">4</div>
+        </div>
+    </div>
+</div>
+
+<div class="h-screen text-white Parent bg-slate-900">
+    <div class="container mx-auto"> 
+        <div class="grid grid-cols-6 gap-4 auto-cols-max"> <!-- "auto-cols-max" only takes up space as needed (or the maximum space, missed this part) -->
+            <div class="rounded-lg bg-sky-500">1</div> 
+            <div class="rounded-lg bg-sky-500">2</div> 
+            <div class="rounded-lg bg-sky-500">3</div>
+            <div class="rounded-lg bg-sky-500">4</div>
+        </div>
+    </div>
+</div>
+
+<div class="h-screen text-white Parent bg-slate-900">
+    <div class="container mx-auto"> 
+        <div class="grid grid-flow-col grid-rows-4 gap-8"> <!-- "grid-rows-6" to specify you want 4 rows, then the "grid-flow-col" switches to next column once all rows are filled up -->
+            <div class="rounded-lg row-span-2 bg-sky-500">1</div> <!-- "row-span-2" makes it take up 2 rows instead of 2-->
+            <div class="rounded-lg bg-sky-500">2</div> 
+            <div class="rounded-lg bg-sky-500">3</div>
+            <div class="rounded-lg bg-sky-500">4</div>
+            <div class="rounded-lg bg-sky-500">5</div>
+            <div class="rounded-lg bg-sky-500">6</div>
+            <div class="rounded-lg bg-sky-500">7</div>
+            <div class="rounded-lg bg-sky-500">8</div>
+            <div class="rounded-lg bg-sky-500">9</div>
+            <div class="rounded-lg bg-sky-500">10</div>
+        </div>
+    </div>
+</div>
+
+<div class="h-screen text-white Parent bg-slate-900">
+    <div class="container mx-auto"> 
+        <div class="grid grid-flow-row-dense grid-rows-3 grid-cols-3 gap-4"> <!-- "grid-flow-row-dense" automatically swaps certain grid squares to empty space -->
+            <div class="p-6 rounded-lg col-span-2 bg-sky-500">1</div>
+            <div class="p-6 rounded-lg col-span-2 bg-sky-500">2</div> <!-- normally leaves empty space, but row 3 is swapped in it's prior form -->
+            <div class="p-6 rounded-lg bg-sky-500">3</div>
+            <div class="p-6 rounded-lg bg-sky-500">4</div>
+            <div class="p-6 rounded-lg bg-sky-500">5</div>
+            <div class="p-6 rounded-lg bg-sky-500">6</div>
+            <div class="p-6 rounded-lg bg-sky-500">7</div>
+            <div class="p-6 rounded-lg bg-sky-500">8</div>
+            <div class="p-6 rounded-lg bg-sky-500">9</div>
+            <div class="p-6 rounded-lg bg-sky-500">10</div>
+        </div>
+    </div>
+</div>
+
+<!-- LAYOUTS -->
+<div class="h-screen text-white Parent bg-slate-900">
+    <div class="container px-2 mx-auto bg-red-500"> <!-- "container" automatically chooses width based on screen size with certain breakpoints specified in tailwind, "mx-auto" centers it -->
+        <h1>Hello!</h1>
+    </div>
+</div>
+
+<div class="h-screen text-white Parent bg-slate-900">
+    <img class="float-left w-64"> <!-- "float-left" makes the image stick to the left of the text, "float-none" for text to not stick to the image -->
+    <img class="w-32">
+    <div class="container px-2 columns-3 columns-lg"> <!-- "columns-3" makes elements in container into 3 columns, "columns-lg" changes the size of the columns -->
+        <p class="clear-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae tempore nobis reiciendis voluptates quo ab repudiandae, tempora minus eaque fuga, et maxime molestias fugit corporis hic quod iure. Laboriosam, sequi.</p> <!-- "clear-left" makes the text stick to the image on the left -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae tempore nobis reiciendis voluptates quo ab repudiandae, tempora minus eaque fuga, et maxime molestias fugit corporis hic quod iure. Laboriosam, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae tempore nobis reiciendis voluptates quo ab repudiandae, tempora minus eaque fuga, et maxime molestias fugit corporis hic quod iure. Laboriosam, sequi.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae tempore nobis reiciendis voluptates quo ab repudiandae, tempora minus eaque fuga, et maxime molestias fugit corporis hic quod iure. Laboriosam, sequi.</p> <!-- It keeps adding to the column with a newline -->
+    </div>
+</div>
+
+<!-- POSITIONS (LAYOUTS) -->
+<!--
+ - static
+ - fixed
+ - absolute
+ - relative
+ - sticky
+-->
+<div class="h-screen text-white Parent bg-slate-900">
+    <div class="container px-2">
+        <div class="relative p-8 bg-red-500 rounded-lg w-32 h-32">
+            <!-- "absolute" to change position based on coordinates, "top-0" to stick to top, "left-0" to stick to left, can also do "-top-2" to go negative and outside the bounds -->
+            <div class="absolute top-0 left-0 w-24 h-24 bg-green-500 rounded-lg"></div> <!-- Once use absolute, check TOP/LEFT/BOTTOM/RIGHT documentation for additional things to call to change absolute position-->
+        </div>
+        <div class="relative p-8 bg-red-500 rounded-lg w-32 h-32 my-10">
+            <div class="absolute inset-2 w-24 h-24 bg-green-500 rounded-lg"></div> <!-- inset is like padding in a way, makes sure to have 2 padding from every direction -->
+        </div>
+    </div>
+</div>
+
+<!-- Use "overflow-x-auto" or y to enable horizontal/vertical scrolling -->
+<img class="overflow-visible"> <!-- If an image is within a box, use "overflow-visible" to let it extend past it's borders -->
+
+<div class="h-screen text-white bg-slate-900">
+    <div class="container columns-3">
+        <div class="visible">Hello!</div> <!-- Note: elements are visible by default -->
+        <div class="invisible">Hello!</div> <!-- Note: still appears on DOM, but visibility is hidden -->
+        <div class="visible">Hello!</div>
+    </div>
+</div>
+
+<div class="h-screen text-white bg-slate-900">
+    <div class="container flex">
+        <div class="p-8 bg-red-500 z-40 rounded-full border border-white">05</div> <!-- "z-40" means it appears on top of any element with a lower z value -->
+        <div class="p-8 bg-red-500 z-30 rounded-full border border-white">04</div>
+        <div class="p-8 bg-red-500 z-20 rounded-full border border-white">03</div>
+        <div class="p-8 bg-red-500 z-10 rounded-full border border-white">02</div>
+        <div class="p-8 bg-red-500 z-0 rounded-full border border-white">01</div>
+    </div>
+</div>
+
+<div class="h-screen text-white bg-slate-900">
+    <div class="container">
+        <div class="bg-green-500 w-64 h-64 object-none"></div> <!-- "Object-none" aka "Object-center" is imagine an image, but you don't resize with the size, so you zoom in on it and can pick which part of the image to zoom into -->
+    </div>
+</div>
+
+<!-- BORDERS -->

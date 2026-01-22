@@ -1,0 +1,111 @@
+<!-- Interpolation Syntax -->
+<!-- replaces {{hotelName}} with the value of hotelName property in the component class at runtime -->
+<h1>Welcome to {{hotelName}}</h1> <!-- Note: this variable is coming from our exported component rooms. Also, this is interpolation syntax -->
+
+<!-- Property Binding -->
+<!-- document.getElementById('numOfRooms').innerText = numOfRooms;      Normal Javascript code (very long) -->
+<!-- quicker way -->
+<!-- Note: the "[innerText] refers to this"-->
+<!-- Performance Note: When we toggle hidden, these elements are still avaiable on the DOM (aka not totally deleted), which can cause performance issues when you have a lot of elements -->
+<div [hidden] = "hideRooms">
+    Number of Rooms: 
+    <div *ngIf="rooms.availableRooms > 0" [ngStyle]="{'color': rooms.availableRooms > 0 ? 'pink' : 'red'}" [innerText]="numOfRooms"></div> <!-- Note: this is box syntax -->
+</div>
+
+<!-- Event Binding -->
+<!-- <button click = "functionName"></button>     Normal HTML code-->
+<button (click)="toggle()">Toggle</button> <!-- Note: this is banana syntax-->
+
+<!-- Note: CRLT + P can help you search for files in VScode and Chrome -->
+
+<!-- DIRECTIVES -->
+<!-- Directives are used to: -->
+    <!-- 1.) change the behavior and appearance of DOM element -->
+    <!-- 2.) implement all lifecycle hooks -->
+    <!-- 3.) can not have a template -->
+<!-- Types of Directives -->
+    <!-- 1.) Structural Directives -->
+        <!-- High cost, change behavior of DOM, can cause performance issues -->
+    <!-- 2.) Attribute Directives -->
+        <!-- use more for the most part -->
+<!-- Built-in Directives -->
+    <!-- *ngIf -->
+    <!-- *ngFor -->
+    <!-- *ngSwitch -->
+    <!-- ngClass -->
+    <!-- ngStyle -->
+<!-- Side Note: DOM = "Document Object Model", aka it's a programming interface for web documents that treats HTML or XML page as a heriarchical tree of objects -->
+
+<br>
+
+<!-- {{ rooms?.availableRooms ?? 'No Rooms' }} --> <!-- If avaiable rooms doesn't exist, then display "No Rooms"-->
+
+{{ roomList | json }} <!-- Mostly used for debugging --> <!-- json pipe -->
+
+<div *ngIf="selectedRoom">
+    {{ selectedRoom | json }}
+</div>
+
+<div>
+    <button (click)="addRoom()">Add Room</button>
+</div>
+
+
+<!-- If we have an available room, I want to display it! -->
+<!-- Use *ngIf instead of [hidden] to help user performace 😎 -->
+<!-- next directive is "*ngFor", kinda've like a for-loop, loops through all records -->
+<div *ngIf="rooms.availableRooms > 0"> <!-- Check if variables exists before using it -->
+    Rooms List
+    <!-- [rooms]="roomList" is input binding, aka angular takes the parent's roomList value and passes it to the child's rooms -->
+    <!-- (selectedRoom)="selectedRoom($event)" is output event binding. selectedRoom is an output field defined in the child and emits and event when something happens in the child, $event contains the information -->
+        <!-- Steps: -->
+            <!-- 1. Parent sends data down with [rooms]="roomList" -->
+            <!-- 2. Child renders the list -->
+            <!-- 3. User clicks a room in the child component -->
+            <!-- 4. Child emeits the selected room with this.selectedRoom.emit(room) -->
+            <!-- 5. Parent listens to the event (selectedRoom)="selectRoom($event)" -->
+    <hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)" [title]="'Room List'"></hinv-rooms-list> <!-- $event is the event recieved from the child component to work with from emit() -->
+</div>
+
+<!-- The * in *ngIf lets you know that they're structural directives --> <!-- Note: DIRECTIVE = special instruction in source code that tells compiler etc. on how to process it -->
+<!-- Structural directives can modify your DOM, attribute directives cannot add/remove elements from the DOM (only tweak certain things) -->
+
+<!-- PIPES -->
+    <!-- Used for data transformation -->
+    <!-- Don't change the actual object -->
+    <!-- Types of pipes: -->
+        <!-- DatePipe -->
+        <!-- UpperCasePipe -->
+        <!-- LowerCasePipe -->
+        <!-- TitlecasePipe-->
+        <!-- CurrencyPipe -->
+        <!-- DecimalPipe -->
+        <!-- PercentPipe -->
+        <!-- JsonPipe -->
+        <!-- SlicePipe -->
+        <!-- AsyncPipe -->
+         
+<!-- LIFECYCLE HOOKS -->
+    <!-- all components need to go through some lifecycle-hooks/events -->
+    <!-- Lifecycle ends when component is destroyed -->
+        <!-- ngOnChanges -->
+        <!-- ngOnInit -->
+        <!-- ngDoCheck -->
+        <!-- ngAfterContentInit -->
+        <!-- ngAfterContentChecked -->
+        <!-- ngAfterViewInit -->
+        <!-- ngAfterViewChecked -->
+        <!-- ngOnDestroy -->
+
+<!-- COMPONENT COMMUNICATION -->
+    <!-- Ways for component communication: -->
+        <!-- When 2+ components need to interact, we require component communication (i.e. our app and rooms components need to communicate) -->
+        <!-- Many ways to achieve this -->
+            <!-- Using @Input and @Output -->
+            <!-- Using @ViewChild and @ContentChild -->
+            <!-- Using Services -->
+
+<!-- In this example, he right-clicked rooms + opened in integrated terminal, then called "ng g c room-list" in the terminal to create a new room-list component. Very efficient way to go about doing so. -->
+
+<!-- In rendering in the DOM, he turned on paint flash. This shows all the the DOM elements that change (Angular detects these changes). -->
+<!-- He shows all the objects being updated with change detection, which can cause bad performance issues, so we need to optimize it-->
