@@ -7,7 +7,7 @@ import { firebaseConfig } from './firebase.config';
 import { initializeApp } from 'firebase/app';
 
 @Component({ // this is the metadata for the component
-  selector: 'app-root',
+  selector: 'hinv-root',
   imports: [RouterOutlet, RouterLink, Books, Cart, AuthModule], // N0te we need to import here!
   templateUrl: './app.html',
   styleUrl: './app.css'

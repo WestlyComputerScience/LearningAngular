@@ -1,0 +1,40 @@
+<h1>Welcome to {{hotelName}} </h1> <!-- This is Angular's interpolation syntax -->
+
+<div [hidden]="isDisabled"> <!-- Our event binding calls the function which makes isDisabled trigger property binding to set values for our HTML elements -->
+    <p>Number of rooms:</p>
+    <div [innerText]="numberOfRooms"> <!-- This would be Angular's property binding (sets values), same as document.getElementById("numberOfRooms"), aka simple js code -->
+</div>
+</div>
+
+<button (click)="toggleDisabled()" class="p-1 m-1 bg-slate-500 cursor-pointer hover:bg-slate-400">Toggle</button> <!-- This would be Angular's event binding (listens for events) -->
+<!-- Note: can inspect in DOM and do breakpoint debugging there. Can also do CNTRL + P to search for rooms.ts to debug -->
+
+<!-- Optional Chaining and Nullage Collision (I believe he said Nullage Collision) -->
+<!-- {{ rooms.availableRooms == 0 ?? "No Rooms"}} --> <!-- This was his null error thing, I skipped this part -->
+
+<div *ngIf="rooms.availableRooms > 0" class="p-2 m-1 bg-slate-400"> <!-- Angular's NgIf is good to hide elements from the DOM -->
+    <p>Rooms List:</p>
+    <!-- {{roomList}} -->
+     <table>
+        <tr class="border">
+            <th>Index</th>
+            <th>Even/Odd</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Room Price</th>
+            <th>Room Amenities</th>
+            <th>Room Check In Time</th>
+            <th>Room Check Out Time</th>
+        </tr>
+        <tr class="border" *ngFor="let room of roomList; let e=even; let o=odd; let i=index"> <!-- Basic *ngFor implementation -->
+            <td>{{ i }}</td>
+            <td>{{ e ? "Even" : "Odd" }}</td>
+            <td>{{ room.roomNumber }}</td>
+            <td class="border-l p-1">{{ room.roomType }}</td>
+            <td class="border-l p-1">{{ room.amenities }}</td>
+            <td class="border-l p-1">{{ room.price }}</td>
+            <td class="border-l p-1">{{ room.checkInTime }}</td>
+            <td class="border-l p-1">{{ room.checkOutTime }}</td>
+        </tr>
+     </table>
+</div>

@@ -67,7 +67,7 @@ export class Books implements OnInit, OnDestroy{
 /*
 PROPERTY BINDING:
  - Helps set values for properties of HTML elements or directives
- - Use property binding for things like toglle button functionality, set paths programmatically, and share values between components
+ - Use property binding for things like toggle button functionality, set paths programmatically, and share values between components
  - Syntax: [property]="value"
 */
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginForm } from '../../Types/Auth';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,20 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    alert(this.form.email + ' ' + this.form.password);
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, this.form.email, this.form.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log('User signed in:', user);
+        alert('Login successful!');
+        // You can redirect or update UI here
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error('Login error:', errorCode, errorMessage);
+        alert('Login failed: ' + errorMessage);
+      });
   }
 }
