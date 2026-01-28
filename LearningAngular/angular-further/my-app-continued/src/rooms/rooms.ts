@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChanges, SimpleChange  } from '@angular/core';
 import { CommonModule, NgClass, NgIf, NgFor } from '@angular/common';
 import { RoomType, RoomDetailsList } from './rooms-types';
 import { RoomsTable } from './rooms-table/rooms-table';
@@ -14,6 +14,8 @@ export class Rooms implements OnInit {
   hotelName: string = "Westly's Hotel"; // Interpolation Syntax
   numberOfRooms: number = 10;
   isDisabled: boolean = false;
+
+  selectedRoom!: RoomDetailsList;
 
   rooms: RoomType = {
     totalRooms: 20,
@@ -63,6 +65,11 @@ export class Rooms implements OnInit {
 
   toggleDisabled(): void {
     this.isDisabled = !this.isDisabled;
+  }
+
+  selectRoom(room: RoomDetailsList): void {
+    this.selectedRoom = room;
+    console.log(`This room has been selected ${room}`);
   }
 
 }

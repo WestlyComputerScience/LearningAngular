@@ -62,7 +62,7 @@
             <!-- 1. Parent sends data down with [rooms]="roomList" -->
             <!-- 2. Child renders the list -->
             <!-- 3. User clicks a room in the child component -->
-            <!-- 4. Child emeits the selected room with this.selectedRoom.emit(room) -->
+            <!-- 4. Child emits the selected room with this.selectedRoom.emit(room) -->
             <!-- 5. Parent listens to the event (selectedRoom)="selectRoom($event)" -->
     <hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)" [title]="'Room List'"></hinv-rooms-list> <!-- $event is the event recieved from the child component to work with from emit() -->
 </div>

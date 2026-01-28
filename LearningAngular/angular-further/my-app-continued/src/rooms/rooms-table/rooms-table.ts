@@ -12,6 +12,12 @@ export class RoomsTable implements OnInit {
 
   @Input() rooms: RoomDetailsList[] = []; // Use decorator @Input to recieve info from parent 
 
+  @Output() selectedRoom = new EventEmitter<RoomDetailsList>();
+
+  selectRoom(room: RoomDetailsList): void {
+    this.selectedRoom.emit(room); // sends data to parent
+  }
+
   constructor() {
   }
 
@@ -19,3 +25,7 @@ export class RoomsTable implements OnInit {
   }
 
 }
+
+/*
+Note: he mentioned CHANGE DETECTION being very important
+*/
