@@ -1,40 +1,41 @@
-<p>Rooms List:</p>
+<!-- <h2 class="text-3xl">{{title}}</h2> -->
     <!-- {{roomList}} -->
-     <table>
-        <thead> <!-- Note: need thead and tbody otherwise hydration error with Angular and DOM! -->
-            <tr class="border">
-                <th>Index</th>
-                <th>Even/Odd</th>
-                <th>Room Number</th>
-                <th>Room Type</th>
-                <th>Room Amenities</th>
-                <th>Room Price</th>
-                <th>Room Check In Time</th>
-                <th>Room Check Out Time</th>
-                <th>Rating</th>
-                <th>
-                    Select Room
-                </th>
-            </tr>
-        </thead>
-        <!-- Note: probably should look up how ngClass can work with Angular -->
-        <!-- Also note: can lookup ngStyle, his example wasn't as good [ngStyle]=... -->
-        <tbody>
-            <tr [ngClass] = "e ? 'even' : 'odd'" class="border" *ngFor="let room of rooms | slice: 0:100; let e=even; let o=odd; let i=index"> <!-- Basic *ngFor implementation --> <!-- Slice parameter to only show a certain # of objects -->
-                <td>{{ i | percent }}</td>
-                <td>{{ e ? "Even" : "Odd" }}</td>
-                <td>{{ room.roomNumber }}</td>
-                <td class="border-l p-1">{{ room.roomType }}</td>
-                <td class="border-l p-1">{{ room.amenities | titlecase }}</td> <!-- Pipes: "| <pipename>"-->
-                <td class="border-l p-1">{{ room.price | currency }}</td>
-                <td class="border-l p-1">{{ room.checkInTime | date : 'dd/MM/yyy' }}</td>
-                <td class="border-l p-1">{{ room.checkOutTime | date : 'short' }}</td>
-                <td class="border p-1">{{ room.rating | number : '1.0-2' }}</td> <!-- 1 (number before decimal) . 0-0 (numbers after decimal point - max numbers after decimal point)-->
-                <td>
-                    <button (click)="selectRoom(room)" class="p-2 m-1 bg-slate-600 hover:bg-slate-500 shadow-md rounded-lg">
-                        Select
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-     </table>
+<hinv-header></hinv-header>
+<table>
+    <thead> <!-- Note: need thead and tbody otherwise hydration error with Angular and DOM! -->
+        <tr class="border">
+            <th>Index</th>
+            <th>Even/Odd</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Room Amenities</th>
+            <th>Room Price</th>
+            <th>Room Check In Time</th>
+            <th>Room Check Out Time</th>
+            <th>Rating</th>
+            <th>
+                Select Room
+            </th>
+        </tr>
+    </thead>
+    <!-- Note: probably should look up how ngClass can work with Angular -->
+    <!-- Also note: can lookup ngStyle, his example wasn't as good [ngStyle]=... -->
+    <tbody>
+        <tr [ngClass] = "e ? 'even' : 'odd'" class="border" *ngFor="let room of rooms; let e=even; let o=odd; let i=index"> <!-- Basic *ngFor implementation --> <!-- Slice parameter to only show a certain # of objects -->
+            <td>{{ i | percent }}</td>
+            <td>{{ e ? "Even" : "Odd" }}</td>
+            <td>{{ room.roomNumber }}</td>
+            <td class="border-l p-1">{{ room.roomType }}</td>
+            <td class="border-l p-1">{{ room.amenities | titlecase }}</td> <!-- Pipes: "| <pipename>"-->
+            <td class="border-l p-1">{{ room.price | currency }}</td>
+            <td class="border-l p-1">{{ room.checkInTime | date : 'dd/MM/yyy' }}</td>
+            <td class="border-l p-1">{{ room.checkOutTime | date : 'short' }}</td>
+            <td class="border p-1">{{ room.rating | number : '1.0-2' }}</td> <!-- 1 (number before decimal) . 0-0 (numbers after decimal point - max numbers after decimal point)-->
+            <td>
+                <button (click)="selectRoom(room)" class="p-2 m-1 bg-slate-600 hover:bg-slate-500 shadow-md rounded-lg">
+                    Select
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

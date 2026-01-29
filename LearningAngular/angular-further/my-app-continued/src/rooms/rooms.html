@@ -16,9 +16,14 @@
     {{ selectedRoom | json }}
 </div>
 
+<div>
+    <button (click)="addRoom()" class="p-2 m-1 bg-slate-500 rounded-lg shadow-lg cursor-pointer hover:bg-slate-400">Add Room</button>
+</div>
+
 {{ rooms | json }} <!-- json format of our roomList (using pipes) -->
+<!-- Note: the -->
 <div *ngIf="rooms.availableRooms > 0" class="p-2 m-1 bg-slate-400"> <!-- Angular's NgIf is good to hide elements from the DOM --> <!-- Note: need to pass $event from output from child to recieve and call a method, note: our event binding listens for the method being triggered with (selectedRoom) -->
     <!-- This rooms component would be our "smart" component and our rooms-table is our "dumb" component. Our smart component handles the data and our dum component transforms it to UI -->
     <!-- Side note of pain: make sure the $event is in the child nodes HTML tag, I put it in the div, lol-->
-    <hinv-rooms-table [rooms]="roomList" (selectedRoom)="selectRoom($event)"></hinv-rooms-table> <!-- Note: our variable in rooms-table is named rooms, so this is setting the value for our input there with property binding -->
+    <hinv-rooms-table [rooms]="roomList" [title]="title" (selectedRoom)="selectRoom($event)"></hinv-rooms-table> <!-- Note: our variable in rooms-table is named rooms, so this is setting the value for our input there with property binding -->
 </div>
